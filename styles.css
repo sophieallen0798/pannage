@@ -105,7 +105,7 @@ nav {
 
 /* Photo banner used on the index page */
 .photo-banner {
-    background-image: url('assets/in-woods-2.jpg');
+    background-image: url('../pannage/assets/in-woods-2.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
