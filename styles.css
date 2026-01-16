@@ -42,6 +42,37 @@ nav {
     letter-spacing: -0.5px;
 }
 
+/* Logo image styling */
+.logo .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+.brand-text {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px;
+    }
+    .brand-text {
+        font-size: 1.5rem;
+    }
+}
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -70,6 +101,47 @@ nav {
     color: white;
     padding: 5rem 2rem;
     text-align: center;
+}
+
+/* Photo banner used on the index page */
+.photo-banner {
+    background-image: url('assets/in-woods-2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 4.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.photo-overlay {
+    background: rgba(29, 47, 29, 0.55);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 980px;
+    text-align: center;
+}
+
+.photo-overlay h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.photo-overlay p {
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .photo-banner {
+        padding: 2.5rem 1rem;
+    }
+    .photo-overlay h2 {
+        font-size: 1.4rem;
+    }
 }
 
 .hero-content h2 {
@@ -191,6 +263,98 @@ main {
     margin-bottom: 1.5rem;
     border-radius: 12px;
     border: 1px solid #e8e6e3;
+}
+
+/* About page visual */
+.about-visual {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 820px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #e8e6e3;
+    display: inline-block;
+}
+
+/* Contact page visual (reuses similar styling to about-image) */
+.contact-visual {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contact-image {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #e8e6e3;
+    display: inline-block;
+}
+
+/* Where to Buy visual */
+.where-visual {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.where-image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #e8e6e3;
+    display: inline-block;
+}
+
+/* Layout for where-to-buy: image + text side-by-side when wide */
+.where-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 700px) {
+    .where-row {
+        grid-template-columns: 40% 60%;
+        gap: 1.5rem;
+    }
+    .where-visual {
+        margin-bottom: 0;
+        text-align: left;
+    }
+    .where-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Two-column layout for visual + How the Pigs Live */
+.about-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 700px) {
+    .about-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .about-visual {
+        margin-bottom: 0;
+        text-align: left;
+    }
+    .about-image {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .about-section h3 {
