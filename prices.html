@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuts & Prices – Pannage Pork</title>
-    <meta name="description" content="Pork cuts and pricing from Pannage Pork. Whole hog, half hog, and individual cuts available. Oxford, NC with delivery across North Carolina.">
+    <meta name="description"
+        content="Pork cuts and pricing from Pannage Pork. Whole hog, half hog, and individual cuts available. Oxford, NC with delivery across North Carolina.">
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=2">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png?v=2">
@@ -12,8 +14,10 @@
     <link rel="manifest" href="assets/site.webmanifest?v=2">
     <link rel="shortcut icon" href="assets/favicon.ico?v=2" type="image/x-icon">
     <meta name="theme-color" content="#3d5a3d">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <header>
         <nav>
@@ -36,90 +40,93 @@
     <main>
         <section class="content">
             <div class="container">
+                <h2>How to Order</h2>
+                <div class="how-to-order">
+                    <div class="how-step">
+                        <h4>1. Choose Your Cuts</h4>
+                        <p>Pick out your preferred cuts from the options below</p>
+                    </div>
+                    <div class="how-step">
+                        <h4>2. Check Availability</h4>
+                        <p><a href="contact.html">Contact us</a> to confirm stock and quantities available</p>
+                    </div>
+                    <div class="how-step">
+                        <h4>3. Pickup or Delivery</h4>
+                        <p>We offer pickup and local delivery across North Carolina — choose what works best.</p>
+                    </div>
+                </div>
                 <h2>Cuts & Prices</h2>
-                
-                <p class="page-intro">Prices below are estimates and may vary slightly based on actual weight. Contact us to check availability and place an order.</p>
 
-                <div class="price-section">
-                    <h3>Whole & Half Hog</h3>
-                    <p>Best value if you've got freezer space. You choose the cuts.</p>
-                    <div class="price-grid">
-                        <div class="price-item">
-                            <span class="cut-name">Whole Hog</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Half Hog</span>
-                            <span class="cut-price">$/lb</span>
+
+                <template id="price-item-template">
+                    <div class="price-item">
+                        <span class="cut-name"></span>
+                        <div class="price-row">
+                            <span class="cut-price"></span>
+                            <span class="avg-weight"></span>
                         </div>
                     </div>
-                </div>
-
-                <div class="price-section">
-                    <h3>Individual Cuts</h3>
-                    <p>Available when in stock. Reach out to see what's currently available.</p>
-                    <div class="price-grid">
-                        <div class="price-item">
-                            <span class="cut-name">Pork Chops</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Bacon</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Ground Pork</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Pork Shoulder</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Spare Ribs</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Baby Back Ribs</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Tenderloin</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Ham (Bone-In)</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Sausage</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Pork Belly</span>
-                            <span class="cut-price">$/lb</span>
+                </template>
+                <div class="prices-layout">
+                    <div class="price-section">
+                        <h3>Shoulder</h3>
+                        <div id="whole-grid" class="price-grid">
                         </div>
                     </div>
-                </div>
 
-                <div class="price-section">
-                    <h3>Other Stuff</h3>
-                    <div class="price-grid">
-                        <div class="price-item">
-                            <span class="cut-name">Bones (for stock)</span>
-                            <span class="cut-price">$/lb</span>
+
+                    <figure class="featured-cut">
+                        <div class="featured-visual">
+                            <img src="assets/shoulder-coppa.png" alt="Shoulder Coppa">
+                            <figcaption>Shoulder Coppa</figcaption>
                         </div>
-                        <div class="price-item">
-                            <span class="cut-name">Lard</span>
-                            <span class="cut-price">$/lb</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="cut-name">Fatback</span>
-                            <span class="cut-price">$/lb</span>
+                    </figure>
+
+                    <div class="price-section span-2">
+                        <h3>Loin</h3>
+                        <div id="loin-grid" class="price-grid">
                         </div>
                     </div>
-                </div>
+                    <figure class="featured-cut">
+                        <div class="featured-visual">
+                            <img src="assets/tenderloin.png" alt="Tenderloin">
+                            <figcaption>Tenderloin</figcaption>
+                        </div>
+                    </figure>
+                    <figure class="featured-cut">
+                        <div class="featured-visual">
+                            <img src="assets/roast-bone.png" alt="Roast Bone-In">
+                            <figcaption>Roast (Bone-In)</figcaption>
+                        </div>
+                    </figure>
 
+
+                    <div class="price-section">
+                        <h3>Other Individual Cuts</h3>
+                        <div id="individual-grid" class="price-grid">
+                        </div>
+                    </div>
+
+                    <figure class="featured-cut">
+                        <div class="featured-visual">
+                            <img src="assets/porterhouse.png" alt="Porterhouse">
+                            <figcaption>Porterhouse</figcaption>
+                        </div>
+                    </figure>
+
+                    <div class="price-section">
+                        <h3>Soups & Stews</h3>
+                        <div id="other-grid" class="price-grid">
+                        </div>
+                    </div>
+
+                    <figure class="featured-cut">
+                        <div class="featured-visual">
+                            <img src="assets/pork-bones.png" alt="Pork Bones">
+                            <figcaption>Pork Bones</figcaption>
+                        </div>
+                    </figure>
+                </div>
                 <div class="order-section">
                     <h2>Ready to Order?</h2>
                     <p>Send us a message to check what's available and set up delivery or pickup.</p>
@@ -133,10 +140,104 @@
         <div class="footer-content">
             <p>&copy; 2025 Pannage Pork</p>
             <div class="footer-social">
-                <a href="https://instagram.com/pannagepork" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://facebook.com/pannagepork" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/pannagepork" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/pannagepork" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
             </div>
         </div>
     </footer>
+    <script>
+        (function () {
+            function createPriceItem(name, price, weight) {
+                var tpl = document.getElementById('price-item-template');
+                if (!tpl) return null;
+                var el = tpl.content.firstElementChild.cloneNode(true);
+                var nameEl = el.querySelector('.cut-name');
+                var priceEl = el.querySelector('.cut-price');
+                var weightEl = el.querySelector('.avg-weight');
+                if (nameEl) nameEl.textContent = name || '';
+                if (priceEl) priceEl.textContent = (price || '');
+                if (weightEl) {
+                    if (weight === undefined || weight === null || weight === '') {
+                        weightEl.remove();
+                    } else {
+                        weightEl.textContent = 'Avg ' + String(weight) + ' lb';
+                    }
+                }
+                return el;
+            }
+
+            function addPriceItem(container, name, price, weight) {
+                var parent = (typeof container === 'string') ? document.querySelector(container) : container;
+                if (!parent) return;
+                var node = createPriceItem(name, price, weight);
+                if (node) parent.appendChild(node);
+            }
+
+            // Organized data for each section
+            var wholeData = [
+                { price: '$8.50', name: 'Whole Shoulder', weight: 12 },
+                { price: '$9.15', name: 'Boston Butt (Bone-In)', weight: 9 },
+                { price: '$9.00', name: 'Picnic', weight: 12 },
+                { price: '$16.00', name: 'Shoulder Coppa', weight: 3 }
+            ];
+
+            var individualData = [
+                { price: '$10.00', name: 'Belly', weight: 10 },
+                { price: '$13.50', name: 'Bacon', weight: 10 },
+                { price: '$7.80', name: 'Shank', weight: 3.5 },
+                { price: '$11.50', name: 'Jowls - Whole', weight: 3 },
+                { price: '$12.00', name: 'Jowls - Sliced', weight: 3 },
+                { price: '$11.50', name: 'Roast', weight: 4 },
+                { price: '$11.50', name: 'Steaks', weight: 1 }
+            ];
+
+            var loinData = [
+                { price: '$10.00', name: 'Rib Half', weight: 6 },
+                { price: '$10.50', name: 'Babyback Ribs', weight: 3 },
+                { price: '$10.00', name: 'Porterhouse', weight: 1.5 },
+                { price: '$11.50', name: 'Chops (Bone-In)', weight: 0.5 },
+                { price: '$16.00', name: 'Tenderloin', weight: 1 },
+                { price: '$9.00', name: 'Roast (Bone-In)', weight: 3 },
+                { price: '$9.30', name: 'Spare Ribs Whole', weight: 6 },
+            ];
+
+            var otherData = [
+                { price: '$10.00', name: 'Pork for Stew', weight: 1 },
+                { price: '$3.00', name: 'Pork Bones', weight: 1 },
+                { price: '$5.00', name: 'Neck Bones', weight: 2 }
+            ];
+
+            var wholeGrid = document.getElementById('whole-grid');
+            var loinGrid = document.getElementById('loin-grid');
+            var individualGrid = document.getElementById('individual-grid');
+            var otherGrid = document.getElementById('other-grid');
+
+            wholeData.forEach(function (it) {
+                var p = it.price && it.price.indexOf('/lb') === -1 ? it.price + '/lb' : it.price;
+                addPriceItem(wholeGrid, it.name, p, it.weight);
+            });
+
+            loinData.forEach(function (it) {
+                var p = it.price && it.price.indexOf('/lb') === -1 ? it.price + '/lb' : it.price;
+                addPriceItem(loinGrid, it.name, p, it.weight);
+            });
+
+            individualData.forEach(function (it) {
+                var p = it.price && it.price.indexOf('/lb') === -1 ? it.price + '/lb' : it.price;
+                addPriceItem(individualGrid, it.name, p, it.weight);
+            });
+
+            otherData.forEach(function (it) {
+                var p = it.price && it.price.indexOf('/lb') === -1 ? it.price + '/lb' : it.price;
+                addPriceItem(otherGrid, it.name, p, it.weight);
+            });
+
+            window.createPriceItem = createPriceItem;
+            window.addPriceItem = addPriceItem;
+        })();
+    </script>
 </body>
+
 </html>
