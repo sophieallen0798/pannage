@@ -105,9 +105,9 @@ nav {
 
 /* Photo banner used on the index page */
 .photo-banner {
-    /* Try absolute repo-root path first (useful for GitHub Pages/project sites),
-       then fall back to a relative path for local or alternate deploys. */
-    background-image: url("/pannage/assets/in-woods.JPG"), url("assets/in-woods.JPG");
+    /* Use a relative path and correct filename case so it works when hosted (case-sensitive).
+       Relative path keeps the reference correct whether the site is served from root or a subpath. */
+    background-image: url("assets/in-woods.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
