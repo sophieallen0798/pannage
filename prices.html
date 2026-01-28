@@ -8,6 +8,7 @@
     <link rel="canonical" href="https://pannagepork.com/prices.html">
     <meta name="description"
         content="Cuts and pricing for pasture-raised pork from Pannage Pork. Whole hogs, halves, and individual cuts. Based in Oxford, NC with delivery across North Carolina.">
+    <meta name="robots" content="index, follow">
     <meta name="keywords" content="pork cuts, pork prices, pasture raised pork, Oxford NC, local pork, buy pork north carolina">
 
     <meta property="og:title" content="Cuts & Prices — Pannage Pork">
@@ -38,6 +39,16 @@
             "brand": { "@type": "Organization", "name": "Pannage Pork" }
         }
         </script>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pannagepork.com/"},
+                    {"@type": "ListItem", "position": 2, "name": "Cuts & Prices", "item": "https://pannagepork.com/prices.html"}
+                ]
+            }
+            </script>
 </head>
 
 <body>
@@ -79,6 +90,10 @@
                 </div>
                 <h2>Cuts & Prices</h2>
 
+                <div class="price-section">
+                    <h3>Whole Hogs & Packs</h3>
+                    <div id="packs-grid" class="price-grid"></div>
+                </div>
 
                 <template id="price-item-template">
                     <div class="price-item">
@@ -127,6 +142,11 @@
                         <h3>Other Individual Cuts</h3>
                         <div id="individual-grid" class="price-grid">
                         </div>
+                    </div>
+
+                    <div class="price-section">
+                        <h3>Sausage & Processed</h3>
+                        <div id="sausage-grid" class="price-grid"></div>
                     </div>
 
                     <figure class="featured-cut">
@@ -197,48 +217,80 @@
                 if (node) parent.appendChild(node);
             }
 
-            // Organized data for each section
+            // Organized data for each section (updated cut list)
+            var packsData = [
+                { price: '$7.00/lb — Approx $770.00', name: 'Whole Pig (Approx 110 lb)', weight: 110 },
+                { price: '$7.00/lb — Approx $385.00', name: 'Half Pig (Approx 55 lb)', weight: 55 },
+                { price: '$7.00/lb — Approx $175.00 — 2 whole primal cuts, Bacon, Sausage', name: 'Value pack (25–30 lb)', weight: '25-30' }
+            ];
+
             var wholeData = [
-                { price: '$8.50', name: 'Whole Shoulder', weight: 12 },
-                { price: '$9.15', name: 'Boston Butt (Bone-In)', weight: 9 },
-                { price: '$9.00', name: 'Picnic', weight: 12 },
-                { price: '$16.00', name: 'Shoulder Coppa', weight: 3 }
+                { price: '$8.50/lb — Approx $102.00', name: 'Whole Shoulder', weight: 12 },
+                { price: '$9.15/lb — Approx $54.90', name: 'Boston Butt (Bone-In)', weight: 6 },
+                { price: '$9.00/lb — Approx $54.00', name: 'Picnic Shoulder', weight: 6 },
+                { price: '$16.00/lb — Approx $48.00', name: 'Shoulder Coppa', weight: 3 }
             ];
 
             var individualData = [
-                { price: '$10.00', name: 'Belly', weight: 10 },
-                { price: '$13.50', name: 'Bacon', weight: 10 },
-                { price: '$7.80', name: 'Shank', weight: 3.5 },
-                { price: '$11.50', name: 'Jowls - Whole', weight: 3 },
-                { price: '$12.00', name: 'Jowls - Sliced', weight: 3 },
-                { price: '$11.50', name: 'Roast', weight: 4 },
-                { price: '$11.50', name: 'Steaks', weight: 1 }
+                { price: '$12.00/lb — $120.00 (smoked) — Non-smoked $1/lb cheaper', name: 'Whole Smoked Slab Belly', weight: 10 },
+                { price: '$13.00/lb — Approx $13.00', name: 'Sliced Smoked Bacon (1 lb)', weight: 1 },
+                { price: '$7.80/lb — Approx $27.30', name: 'Whole Shanks', weight: 3.5 }
             ];
 
             var loinData = [
-                { price: '$10.00', name: 'Rib Half', weight: 6 },
-                { price: '$10.50', name: 'Babyback Ribs', weight: 3 },
-                { price: '$10.00', name: 'Porterhouse', weight: 1.5 },
-                { price: '$11.50', name: 'Chops (Bone-In)', weight: 0.5 },
-                { price: '$16.00', name: 'Tenderloin', weight: 1 },
-                { price: '$9.00', name: 'Roast (Bone-In)', weight: 3 },
-                { price: '$9.30', name: 'Spare Ribs Whole', weight: 6 },
+                { price: '$10.50/lb — Approx $31.50', name: 'Babyback Ribs', weight: 3 },
+                { price: '$11.50/lb — Approx $11.50', name: 'Bone-In Pork Chop', weight: 1 },
+                { price: '$13.50/lb — Approx $13.50', name: 'Bone-Out Pork Chop', weight: 1 },
+                { price: '$16.00/lb — Approx $16.00', name: 'Whole Tenderloin', weight: 1 },
+                { price: '$9.00/lb — Approx $22.50', name: 'Bone-In Roast (2.5 lb) — larger roasts available', weight: 2.5 },
+                { price: '$9.00/lb — Approx $54.00', name: 'Spare Ribs (Whole)', weight: 6 }
+            ];
+
+            var jowlData = [
+                { price: '$10.50/lb — Approx $31.50', name: 'Whole Jowl', weight: 3 },
+                { price: '$11.00/lb — Approx $33.00', name: 'Sliced Jowl', weight: 3 },
+                { price: '$13.00/lb — Approx $39.00', name: 'Smoked Whole Jowl', weight: 3 },
+                { price: '$14.00/lb — Approx $42.00', name: 'Smoked Sliced Jowl', weight: 3 }
+            ];
+
+            var hamsData = [
+                { price: '$10.00/lb — Approx $170.00', name: 'Whole Ham', weight: 17 },
+                { price: '$11.50/lb — Approx $28.75', name: 'Ham Roasts (2.5 lb) — 5 lb option available', weight: 2.5 }
             ];
 
             var otherData = [
-                { price: '$10.00', name: 'Pork for Stew', weight: 1 },
-                { price: '$3.00', name: 'Pork Bones', weight: 1 },
-                { price: '$5.00', name: 'Neck Bones', weight: 2 }
+                { price: '$10.00/lb — Approx $10.00', name: 'Pork for Stew', weight: 1 },
+                { price: '$3.00/lb — Approx $3.00', name: 'Pork Bones', weight: 1 },
+                { price: '$5.00/lb — Approx $10.00', name: 'Neck Bones (2 lb)', weight: 2 },
+                { price: '$4.50/lb — Approx $4.50', name: 'Fatback', weight: 1 },
+                { price: '$4.50/lb — Approx $4.50', name: 'Leaf Fat', weight: 1 },
+                { price: '$5.00/lb — Approx $5.00', name: 'Lard', weight: 1 },
+                { price: '$6.00/lb — Approx $6.00', name: 'Tongue', weight: 1 }
             ];
 
+            var sausageData = [
+                { price: '$5.00/lb', name: 'Ground Pork Sausage (1 lb packages)', weight: 1 },
+                { price: '$7.00/lb', name: 'Garlic Bratwursts', weight: 1 },
+                { price: '$7.00/lb', name: 'Mild Italian', weight: 1 },
+                { price: '$7.00/lb', name: 'Hot Italian', weight: 1 },
+                { price: '$9.00/lb', name: 'Chorizo', weight: 1 }
+            ];
+
+            var packsGrid = document.getElementById('packs-grid');
             var wholeGrid = document.getElementById('whole-grid');
             var loinGrid = document.getElementById('loin-grid');
             var individualGrid = document.getElementById('individual-grid');
             var otherGrid = document.getElementById('other-grid');
+            var sausageGrid = document.getElementById('sausage-grid');
 
             wholeData.forEach(function (it) {
                 var p = it.price && it.price.indexOf('/lb') === -1 ? it.price + '/lb' : it.price;
                 addPriceItem(wholeGrid, it.name, p, it.weight);
+            });
+
+            // Packs (whole/half/value)
+            packsData.forEach(function (it) {
+                addPriceItem(packsGrid, it.name, it.price, it.weight);
             });
 
             loinData.forEach(function (it) {
@@ -251,9 +303,24 @@
                 addPriceItem(individualGrid, it.name, p, it.weight);
             });
 
+            // Jowls
+            jowlData.forEach(function (it) {
+                addPriceItem(individualGrid, it.name, it.price, it.weight);
+            });
+
+            // Hams
+            hamsData.forEach(function (it) {
+                addPriceItem(individualGrid, it.name, it.price, it.weight);
+            });
+
             otherData.forEach(function (it) {
                 var p = it.price && it.price.indexOf('/lb') === -1 ? it.price + '/lb' : it.price;
                 addPriceItem(otherGrid, it.name, p, it.weight);
+            });
+
+            // Sausage
+            sausageData.forEach(function (it) {
+                addPriceItem(sausageGrid, it.name, it.price, it.weight);
             });
 
             window.createPriceItem = createPriceItem;
