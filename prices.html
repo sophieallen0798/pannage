@@ -9,17 +9,20 @@
     <meta name="description"
         content="Cuts and pricing for pasture-raised pork from Pannage Pork. Whole hogs, halves, and individual cuts. Based in Oxford, NC with delivery across North Carolina.">
     <meta name="robots" content="index, follow">
-    <meta name="keywords" content="pork cuts, pork prices, pasture raised pork, Oxford NC, local pork, buy pork north carolina">
+    <meta name="keywords"
+        content="pork cuts, pork prices, pasture raised pork, Oxford NC, local pork, buy pork north carolina">
 
     <meta property="og:title" content="Cuts & Prices — Pannage Pork">
-    <meta property="og:description" content="Cuts and pricing for pasture-raised pork from Pannage Pork. Whole hogs, halves, and individual cuts available for order.">
+    <meta property="og:description"
+        content="Cuts and pricing for pasture-raised pork from Pannage Pork. Whole hogs, halves, and individual cuts available for order.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pannagepork.com/prices.html">
     <meta property="og:image" content="https://pannagepork.com/assets/shoulder-coppa.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cuts & Prices — Pannage Pork">
-    <meta name="twitter:description" content="Cuts and pricing for pasture-raised pork from Pannage Pork. Order whole hogs, halves, or individual cuts.">
+    <meta name="twitter:description"
+        content="Cuts and pricing for pasture-raised pork from Pannage Pork. Order whole hogs, halves, or individual cuts.">
     <meta name="twitter:image" content="https://pannagepork.com/assets/shoulder-coppa.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=2">
@@ -30,7 +33,7 @@
     <meta name="theme-color" content="#3d5a3d">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script type="application/ld+json">
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Product",
@@ -39,7 +42,7 @@
             "brand": { "@type": "Organization", "name": "Pannage Pork" }
         }
         </script>
-            <script type="application/ld+json">
+    <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
@@ -92,6 +95,7 @@
 
                 <div class="price-section">
                     <h3>Whole Hogs & Packs</h3>
+                    <p>When ordering combo packs, we will go over your preferences and cut options together.</p>
                     <div id="packs-grid" class="price-grid"></div>
                 </div>
 
@@ -102,6 +106,7 @@
                             <span class="cut-price"></span>
                             <span class="avg-weight"></span>
                         </div>
+                        <p class="cut-description"></p>
                     </div>
                 </template>
                 <div class="prices-layout">
@@ -185,13 +190,14 @@
     </footer>
     <script>
         (function () {
-            function createPriceItem(name, price, weight) {
+            function createPriceItem(name, price, weight, description) {
                 var tpl = document.getElementById('price-item-template');
                 if (!tpl) return null;
                 var el = tpl.content.firstElementChild.cloneNode(true);
                 var nameEl = el.querySelector('.cut-name');
                 var priceEl = el.querySelector('.cut-price');
                 var weightEl = el.querySelector('.avg-weight');
+                var descEl = el.querySelector('.cut-description');
                 if (nameEl) nameEl.textContent = name || '';
                 if (priceEl) priceEl.textContent = (price || '');
                 if (weightEl) {
@@ -201,21 +207,28 @@
                         weightEl.textContent = 'Avg ' + String(weight) + ' lb';
                     }
                 }
+                if (descEl) {
+                    if (description === undefined || description === null || description === '') {
+                        descEl.remove();
+                    } else {
+                        descEl.textContent = description;
+                    }
+                }
                 return el;
             }
 
-            function addPriceItem(container, name, price, weight) {
+            function addPriceItem(container, name, price, weight, description) {
                 var parent = (typeof container === 'string') ? document.querySelector(container) : container;
                 if (!parent) return;
-                var node = createPriceItem(name, price, weight);
+                var node = createPriceItem(name, price, weight, description);
                 if (node) parent.appendChild(node);
             }
 
             // Organized data for each section (updated cut list)
             var packsData = [
-                { price: '$7.00/lb — Approx $770.00', name: 'Whole Pig (Approx 110 lb)', weight: 110 },
-                { price: '$7.00/lb — Approx $385.00', name: 'Half Pig (Approx 55 lb)', weight: 55 },
-                { price: '$7.00/lb — Approx $175.00 — 2 whole cuts or combination of smaller cuts, 5 lbs bacon, and 5 lbs Sausage', name: 'Value pack (25–30 lb)', weight: '25-30' }
+                { price: '$7.00/lb — Approx $770.00', name: 'Whole Pig (Approx 110 lb)', description: 'Our whole pig is custom-cut to your preferences — you will receive approximately two of each major cut (loin, shoulder, hams) or an equivalent combination of smaller cuts (Boston butt, tenderloin, ham roast, bone-in chops, etc.). Includes a minimum of 18 lb of sausage.', weight: 110 },
+                { price: '$7.00/lb — Approx $385.00', name: 'Half Pig (Approx 55 lb)', description: 'Our half pig provides one of each major cut or an equivalent mix of smaller cuts (ham roasts, bone-in chops, etc.). Includes a minimum of 9 lb of sausage.', weight: 55 },
+                { price: '$7.00/lb — Approx $175.00', name: 'Value pack (25–30 lb)', description: 'Great value pack: 2 whole cuts or a combination of smaller cuts, plus 5 lb of bacon and 5 lb of sausage — perfect for trying a variety or stocking the freezer.', weight: '25-30' }
             ];
 
             var wholeData = [
@@ -284,7 +297,7 @@
 
             // Packs (whole/half/value)
             packsData.forEach(function (it) {
-                addPriceItem(packsGrid, it.name, it.price, it.weight);
+                addPriceItem(packsGrid, it.name, it.price, it.weight, it.description);
             });
 
             loinData.forEach(function (it) {

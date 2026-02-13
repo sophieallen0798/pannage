@@ -130,11 +130,32 @@ nav {
     margin: 0 0 0.5rem 0;
     font-size: 2rem;
     color: #fff;
+    opacity: 0;
+    animation: slideUp 1.0s forwards ease-out;
 }
 
 .photo-overlay p {
     color: rgba(255,255,255,0.95);
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideUp 1.0s forwards ease-out;
+}
+
+.photo-overlay .cta-button {
+    animation: slideUp 1.0s forwards ease-out;
+    opacity: 0;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -661,6 +682,10 @@ footer {
 .location-section > p {
     color: #5a5a5a;
     margin-bottom: 1.25rem;
+}
+
+.location-section .cta-button {
+    border-color: #3d5a3d;
 }
 
 .location-list {
