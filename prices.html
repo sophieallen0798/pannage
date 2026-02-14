@@ -204,7 +204,11 @@
                 var weightEl = el.querySelector('.avg-weight');
                 var descEl = el.querySelector('.cut-description');
                 if (nameEl) nameEl.textContent = name || '';
-                if (priceEl) priceEl.textContent = (price || '');
+                if (priceEl) {
+                    var displayPrice = price || '';
+                    displayPrice = displayPrice.replace(/\s*—\s*Approx\b.*$/i, '').trim();
+                    priceEl.textContent = displayPrice;
+                }
                 if (weightEl) {
                     if (weight === undefined || weight === null || weight === '') {
                         weightEl.remove();
@@ -231,53 +235,53 @@
 
             // Organized data for each section (updated cut list)
             var packsData = [
-                { price: '$7.00/lb — Approx $770.00', name: 'Whole Pig (Approx 110 lb)', description: 'Our whole pig is custom-cut to your preferences — you will receive approximately two of each major cut (loin, shoulder, hams) or an equivalent combination of smaller cuts (Boston butt, tenderloin, ham roast, bone-in chops, etc.). Includes a minimum of 18 lb of sausage.', weight: 110 },
-                { price: '$7.00/lb — Approx $385.00', name: 'Half Pig (Approx 55 lb)', description: 'Our half pig provides one of each major cut or an equivalent mix of smaller cuts (ham roasts, bone-in chops, etc.). Includes a minimum of 9 lb of sausage.', weight: 55 },
-                { price: '$7.00/lb — Approx $175.00', name: 'Value pack (25–30 lb)', description: 'Great value pack: 2 whole cuts or a combination of smaller cuts, plus 5 lb of bacon and 5 lb of sausage — perfect for trying a variety or stocking the freezer.', weight: '25-30' }
+                { price: '$7.00/lb', name: 'Whole Pig', description: 'Our whole pig is custom-cut to your preferences — you will receive approximately two of each major cut (loin, shoulder, hams) or an equivalent combination of smaller cuts (Boston butt, tenderloin, ham roast, bone-in chops, etc.). Includes a minimum of 18 lb of sausage.', weight: 110 },
+                { price: '$7.00/lb', name: 'Half Pig', description: 'Our half pig provides one of each major cut or an equivalent mix of smaller cuts (ham roasts, bone-in chops, etc.). Includes a minimum of 9 lb of sausage.', weight: 55 },
+                { price: '$7.00/lb', name: 'Value pack', description: 'Great value pack: 2 whole cuts or a combination of smaller cuts, plus 5 lb of bacon and 5 lb of sausage — perfect for trying a variety or stocking the freezer.', weight: '25-30' }
             ];
 
             var wholeData = [
-                { price: '$8.50/lb — Approx $102.00', name: 'Whole Shoulder', weight: 12 },
-                { price: '$9.15/lb — Approx $54.90', name: 'Boston Butt (Bone-In)', weight: 6 },
-                { price: '$9.00/lb — Approx $54.00', name: 'Picnic Shoulder', weight: 6 },
-                { price: '$16.00/lb — Approx $48.00', name: 'Shoulder Coppa', weight: 3 }
+                { price: '$8.50/lb', name: 'Whole Shoulder', weight: 12 },
+                { price: '$9.15/lb', name: 'Boston Butt (Bone-In)', weight: 6 },
+                { price: '$9.00/lb', name: 'Picnic Shoulder', weight: 6 },
+                { price: '$16.00/lb', name: 'Shoulder Coppa', weight: 3 }
             ];
 
             var individualData = [
                 { price: '$12.00/lb — $120.00 (smoked) — Non-smoked $1/lb cheaper', name: 'Whole Smoked Slab Belly', weight: 10 },
-                { price: '$13.00/lb — Approx $13.00', name: 'Sliced Smoked Bacon (1 lb)', weight: 1 },
-                { price: '$7.80/lb — Approx $27.30', name: 'Whole Shanks', weight: 3.5 }
+                { price: '$13.00/lb', name: 'Sliced Smoked Bacon (1 lb)', weight: 1 },
+                { price: '$7.80/lb', name: 'Whole Shanks', weight: 3.5 }
             ];
 
             var loinData = [
-                { price: '$10.50/lb — Approx $31.50', name: 'Babyback Ribs', weight: 3 },
-                { price: '$11.50/lb — Approx $11.50', name: 'Bone-In Pork Chop', weight: 1 },
-                { price: '$13.50/lb — Approx $13.50', name: 'Bone-Out Pork Chop', weight: 1 },
-                { price: '$16.00/lb — Approx $16.00', name: 'Whole Tenderloin', weight: 1 },
-                { price: '$9.00/lb — Approx $22.50', name: 'Bone-In Roast (2.5 lb) — larger roasts available', weight: 2.5 },
-                { price: '$9.00/lb — Approx $54.00', name: 'Spare Ribs (Whole)', weight: 6 }
+                { price: '$10.50/lb', name: 'Babyback Ribs', weight: 3 },
+                { price: '$11.50/lb', name: 'Bone-In Pork Chop', weight: 1 },
+                { price: '$13.50/lb', name: 'Bone-Out Pork Chop', weight: 1 },
+                { price: '$16.00/lb', name: 'Whole Tenderloin', weight: 1 },
+                { price: '$9.00/lb', name: 'Bone-In Roast (2.5 lb) — larger roasts available', weight: 2.5 },
+                { price: '$9.00/lb', name: 'Spare Ribs (Whole)', weight: 6 }
             ];
 
             var jowlData = [
-                { price: '$10.50/lb — Approx $31.50', name: 'Whole Jowl', weight: 3 },
-                { price: '$11.00/lb — Approx $33.00', name: 'Sliced Jowl', weight: 3 },
-                { price: '$13.00/lb — Approx $39.00', name: 'Smoked Whole Jowl', weight: 3 },
-                { price: '$14.00/lb — Approx $42.00', name: 'Smoked Sliced Jowl', weight: 3 }
+                { price: '$10.50/lb', name: 'Whole Jowl', weight: 3 },
+                { price: '$11.00/lb', name: 'Sliced Jowl', weight: 3 },
+                { price: '$13.00/lb', name: 'Smoked Whole Jowl', weight: 3 },
+                { price: '$14.00/lb', name: 'Smoked Sliced Jowl', weight: 3 }
             ];
 
             var hamsData = [
-                { price: '$10.00/lb — Approx $170.00', name: 'Whole Ham', weight: 17 },
-                { price: '$11.50/lb — Approx $28.75', name: 'Ham Roasts (2.5 lb) — 5 lb option available', weight: 2.5 }
+                { price: '$10.00/lb', name: 'Whole Ham', weight: 17 },
+                { price: '$11.50/lb', name: 'Ham Roasts (2.5 lb) — 5 lb option available', weight: 2.5 }
             ];
 
             var otherData = [
-                { price: '$10.00/lb — Approx $10.00', name: 'Pork for Stew', weight: 1 },
-                { price: '$3.00/lb — Approx $3.00', name: 'Pork Bones', weight: 1 },
-                { price: '$5.00/lb — Approx $10.00', name: 'Neck Bones (2 lb)', weight: 2 },
-                { price: '$4.50/lb — Approx $4.50', name: 'Fatback', weight: 1 },
-                { price: '$4.50/lb — Approx $4.50', name: 'Leaf Fat', weight: 1 },
-                { price: '$5.00/lb — Approx $5.00', name: 'Lard', weight: 1 },
-                { price: '$6.00/lb — Approx $6.00', name: 'Tongue', weight: 1 }
+                { price: '$10.00/lb', name: 'Pork for Stew', weight: 1 },
+                { price: '$3.00/lb', name: 'Pork Bones', weight: 1 },
+                { price: '$5.00/lb', name: 'Neck Bones (2 lb)', weight: 2 },
+                { price: '$4.50/lb', name: 'Fatback', weight: 1 },
+                { price: '$4.50/lb', name: 'Leaf Fat', weight: 1 },
+                { price: '$5.00/lb', name: 'Lard', weight: 1 },
+                { price: '$6.00/lb', name: 'Tongue', weight: 1 }
             ];
 
             var sausageData = [
